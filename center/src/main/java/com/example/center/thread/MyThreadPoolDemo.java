@@ -1,7 +1,5 @@
 package com.example.center.thread;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -17,9 +15,7 @@ public class MyThreadPoolDemo {
 
         for (int i = 1; i <= 10; i++) {
             int finalI = i;
-            executorService.execute(()->{
-                System.out.println(Thread.currentThread().getName()+",正在执行:"+ finalI);
-            });
+            executorService.execute(()-> System.out.println(Thread.currentThread().getName()+",正在执行:"+ finalI));
         }
 
 
