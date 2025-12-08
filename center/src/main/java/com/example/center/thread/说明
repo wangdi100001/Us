@@ -3,3 +3,4 @@
 3.手写一个生产者，消费者的消息队列例子                             thread03
 4.callable 接口                                              callableDemo
 5.创建线程池/手写线程池                                                  MyThreadPoolDemo
+6.spring调度任务                                                 SpringScheduledDemo

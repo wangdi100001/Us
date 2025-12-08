@@ -8,7 +8,38 @@ public class MyThreadPoolDemo {
 
 //        useExecutorServicedDemo();
         customizeExecutorServicePool();
+        scheduledExecutorServicePoll();
+    }
 
+    /**
+     * 调度线程池
+     */
+    private static void scheduledExecutorServicePoll() {
+        // 创建调度线程池（核心线程数为1）
+        ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+
+        // 延迟1秒执行一次任务
+        scheduler.schedule(() -> System.out.println("延迟1秒执行"), 1, TimeUnit.SECONDS);
+
+        // 延迟2秒后，每3秒执行一次任务（固定频率）
+        scheduler.scheduleAtFixedRate(() -> {
+            System.out.println("固定频率执行：" + System.currentTimeMillis());
+            try {
+                Thread.sleep(1000); // 任务执行1秒
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }, 2, 3, TimeUnit.SECONDS);
+
+        // 延迟2秒后，每3秒执行一次任务（固定延迟）
+        scheduler.scheduleWithFixedDelay(() -> {
+            System.out.println("固定延迟执行：" + System.currentTimeMillis());
+            try {
+                Thread.sleep(1000); // 任务执行1秒
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }, 2, 3, TimeUnit.SECONDS);
     }
 
     /**
@@ -33,6 +64,7 @@ public class MyThreadPoolDemo {
             int finalI = i;
             executorService.execute(()-> System.out.println(Thread.currentThread().getName()+",正在执行:"+ finalI));
         }
+
     }
 
     /**

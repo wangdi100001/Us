@@ -12,7 +12,7 @@ class Mythread implements Callable<String>{
     }
 }
 
-public class callableDemo {
+public class CallableDemo {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
         FutureTask<String> futureTask = new FutureTask<>(new Mythread());
         Thread thread = new Thread(futureTask,"AAA");
